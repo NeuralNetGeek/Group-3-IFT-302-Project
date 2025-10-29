@@ -1,0 +1,119 @@
+/* GLOBAL STYLES */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  color: #FFFFFF;
+  background: linear-gradient(-45deg, #0F2451, #1E3C72, #2A5298, #0F2451);
+  background-size: 400% 400%;
+  animation: gradientFlow 20s ease infinite;
+  background-image: url('assets/backgrounds/day-bg.png');
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ANIMATED BACKGROUND */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* HEADER */
+.top-bar {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.location {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.local-time {
+  font-size: 16px;
+  color: #B0C4DE;
+}
+
+/* MAIN WEATHER SECTION */
+.main-weather {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.temp {
+  font-size: 80px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.feels-like, .condition {
+  font-size: 18px;
+  margin: 4px 0;
+  color: #DDE6F2;
+}
+
+/* WEATHER DETAILS */
+.weather-details {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.detail {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  width: 140px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.detail p {
+  margin: 0;
+  font-size: 14px;
+  color: #D0D8E2;
+}
+
+.detail h3 {
+  margin-top: 8px;
+  font-size: 20px;
+}
+
+/* FORECAST SECTION */
+.forecast {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 50px;
+  margin-bottom: 60px;
+}
+
+.forecast-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  width: 100px;
+  padding: 15px 10px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.forecast-card p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.forecast-card img {
+  width: 35px;
+  height: 35px;
+  margin: 5px 0;
+}
