@@ -5,36 +5,51 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="style.css" />
+    <script defer src="js/app.js"></script>
   </head>
   <body>
     <div class="day-celsius">
+      <!-- SEARCH BAR -->
+      <div id="search-bar" class="search-bar">
+        <input id="search-input" type="text" placeholder="Search city..." />
+      </div>
+
+      <!-- WEATHER MAIN CARD -->
       <div class="frame">
         <div class="div"></div>
         <div class="frame-2">
           <div class="frame-3">
             <div class="frame-4">
-              <div class="text-wrapper">Abuja</div>
-              <div class="text-wrapper-2">NG</div>
+              <div id="city" class="text-wrapper">Abuja</div>
+              <div id="country" class="text-wrapper-2">NG</div>
               <div class="text-wrapper-3">,</div>
             </div>
             <div class="frame-5">
-              <img class="vector" src="img/vector-7.svg" /> <img class="img" src="img/vector-5.svg" />
+              <img id="weather-icon" class="vector" src="img/vector-7.svg" />
             </div>
           </div>
+
           <div class="frame-wrapper">
             <div class="frame-6">
               <div class="div-wrapper">
-                <div class="vector-wrapper"><img class="vector-2" src="img/vector-3.svg" /></div>
+                <div class="vector-wrapper">
+                  <img class="vector-2" src="img/vector-3.svg" />
+                </div>
               </div>
-              <div class="scattered-clouds-wrapper"><div class="scattered-clouds">Scattered Clouds</div></div>
+              <div class="scattered-clouds-wrapper">
+                <div id="condition" class="scattered-clouds">Scattered Clouds</div>
+              </div>
             </div>
           </div>
+
           <div class="frame-7">
-            <div class="text-wrapper-4">07:30 AM</div>
+            <div id="updated-time" class="text-wrapper-4">07:30 AM</div>
             <div class="text-wrapper-5">Updated</div>
           </div>
         </div>
       </div>
+
+      <!-- WEATHER METRICS -->
       <div class="frame-8">
         <div class="frame-9">
           <div class="frame-10">
@@ -43,9 +58,10 @@
           </div>
           <div class="frame-13">
             <div class="frame-14"><div class="text-wrapper-7">%</div></div>
-            <div class="frame-15"><div class="text-wrapper-8">78</div></div>
+            <div id="humidity" class="frame-15"><div class="text-wrapper-8">78</div></div>
           </div>
         </div>
+
         <div class="frame-16">
           <div class="rectangle"></div>
           <div class="frame-17">
@@ -54,9 +70,10 @@
           </div>
           <div class="frame-19">
             <div class="frame-20"><div class="text-wrapper-10">hPa</div></div>
-            <div class="frame-21"><div class="text-wrapper-11">1012</div></div>
+            <div id="pressure" class="frame-21"><div class="text-wrapper-11">1012</div></div>
           </div>
         </div>
+
         <div class="frame-22">
           <div class="frame-10">
             <img class="frame-11" src="img/image.svg" />
@@ -64,9 +81,10 @@
           </div>
           <div class="frame-13">
             <div class="frame-24"><div class="text-wrapper-10">m/s</div></div>
-            <div class="frame-25"><div class="text-wrapper-13">4.2</div></div>
+            <div id="wind" class="frame-25"><div class="text-wrapper-13">4.2</div></div>
           </div>
         </div>
+
         <div class="frame-26">
           <div class="rectangle"></div>
           <div class="frame-17">
@@ -75,27 +93,31 @@
           </div>
           <div class="frame-19">
             <div class="frame-28"><div class="text-wrapper-15">km</div></div>
-            <div class="frame-29"><div class="text-wrapper-16">9</div></div>
+            <div id="visibility" class="frame-29"><div class="text-wrapper-16">9</div></div>
           </div>
         </div>
       </div>
-      <img class="frame-30" src="img/frame.svg" />
+
+      <!-- TEMPERATURE SECTION -->
       <div class="frame-31">
         <div class="frame-32">
-          <div class="text-wrapper-17">27</div>
+          <div id="feels-like" class="text-wrapper-17">27</div>
           <div class="text-wrapper-18">Feels like</div>
           <div class="text-wrapper-19">°C</div>
         </div>
         <div class="frame-33">
           <div class="text-wrapper-20">°C</div>
-          <div class="text-wrapper-21">28</div>
+          <div id="temperature" class="text-wrapper-21">28</div>
         </div>
       </div>
+
+      <!-- TOGGLE -->
       <div class="frame-34">
-        <div class="frame-35"><div class="text-wrapper-22">°C</div></div>
-        <div class="frame-36"><div class="text-wrapper-23">°F</div></div>
+        <div id="celsius-btn" class="frame-35"><div class="text-wrapper-22">°C</div></div>
+        <div id="fahrenheit-btn" class="frame-36"><div class="text-wrapper-23">°F</div></div>
       </div>
-      <div class="nav"></div>
+
+      <!-- NAVIGATION SIDE -->
       <div class="frame-37">
         <div class="rectangle-2"></div>
         <div class="frame-38">
@@ -110,33 +132,41 @@
               </div>
             </div>
           </div>
+
           <div class="frame-45">
             <div class="frame-46">
               <div class="frame-47"><div class="text-wrapper-26">Current Location</div></div>
               <div class="frame-48">
-                <img class="vector" src="img/vector-2.svg" /> <img class="img" src="img/vector.svg" />
+                <img class="vector" src="img/vector-2.svg" />
+                <img class="img" src="img/vector.svg" />
               </div>
             </div>
             <div class="frame-49"><div class="text-wrapper-27">Abuja</div></div>
           </div>
+
           <div class="frame-50">
             <div class="frame-46">
               <div class="frame-48"><img class="vector-2" src="img/vector-4.svg" /></div>
               <div class="frame-51"><div class="text-wrapper-28">Condition</div></div>
             </div>
-            <div class="frame-49"><div class="text-wrapper-29">Clear</div></div>
+            <div class="frame-49"><div id="side-condition" class="text-wrapper-29">Clear</div></div>
           </div>
+
           <div class="frame-52">
             <div class="frame-46">
               <div class="frame-53"><div class="text-wrapper-30">Local Time</div></div>
               <div class="frame-54">
-                <img class="vector-3" src="img/vector-9.svg" /> <img class="vector-4" src="img/vector-8.svg" />
+                <img class="vector-3" src="img/vector-9.svg" />
+                <img class="vector-4" src="img/vector-8.svg" />
               </div>
             </div>
-            <div class="frame-55"><div class="text-wrapper-31">07:30 AM</div></div>
+            <div class="frame-55"><div id="local-time" class="text-wrapper-31">07:30 AM</div></div>
           </div>
         </div>
       </div>
+
+      <!-- FORECAST SECTION -->
+      <section id="forecast" class="forecast-section"></section>
     </div>
   </body>
 </html>

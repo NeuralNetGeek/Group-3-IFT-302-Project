@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather Dashboard — Night Mode (°C)</title>
+    <link rel="stylesheet" href="../style/shared.css" />
+    <link rel="stylesheet" href="../style/night.css" />
+  </head>
+  <body>
+    <div class="night-celsius">
+      <!-- Frosted Sidebar -->
+      <aside class="frame-8">
+        <div class="frame-9">
+          <h3 class="text-wrapper-6">Dashboard</h3>
+          <h2 class="text-wrapper-7">Weather</h2>
+          <p>Current Location: <span id="sidebarLocation">Abuja</span></p>
+          <p>Condition: <span id="sidebarCondition">Clear</span></p>
+          <p>Local Time: <span id="sidebarTime">07:30 PM</span></p>
+        </div>
+      </aside>
+
+      <!-- Frosted main weather frame -->
+      <div class="frame">
+        <div class="frame-2">
+          <div class="frame-3">
+            <div class="frame-4">
+              <div id="cityName" class="text-wrapper">Abuja</div>
+              <div class="text-wrapper-2">NG</div>
+              <div class="text-wrapper-3">,</div>
+            </div>
+          </div>
+          <div class="frame-wrapper">
+            <div class="frame-6">
+              <div class="vector-wrapper">
+                <img id="weatherIcon" class="vector-2" src="../assets/icons/moon-cloud.svg" />
+              </div>
+              <div class="scattered-clouds-wrapper">
+                <div id="weatherDescription" class="scattered-clouds">Scattered Clouds</div>
+              </div>
+            </div>
+          </div>
+          <div class="frame-7">
+            <div id="updatedTime" class="text-wrapper-4">07:30 PM</div>
+            <div class="text-wrapper-5">Updated</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Temperature display -->
+      <div class="frame-83">
+        <div class="frame-84">
+          <div id="feelsLike" class="text-wrapper-47">27</div>
+          <div class="text-wrapper-48">Feels like</div>
+          <div class="text-wrapper-49">°C</div>
+        </div>
+        <div class="frame-85">
+          <div id="temperature" class="text-wrapper-51">28</div>
+          <div class="text-wrapper-50">°C</div>
+        </div>
+      </div>
+
+      <!-- Metric Cards -->
+      <div class="frame-30">
+        <div class="metric-card"><p>Humidity</p><h3><span id="humidity">78</span>%</h3></div>
+        <div class="metric-card"><p>Pressure</p><h3><span id="pressure">1012</span> hPa</h3></div>
+        <div class="metric-card"><p>Wind Speed</p><h3><span id="windSpeed">4.2</span> m/s</h3></div>
+        <div class="metric-card"><p>Visibility</p><h3><span id="visibility">9</span> km</h3></div>
+      </div>
+
+      <!-- 5-day forecast -->
+      <section id="forecast" class="forecast"></section>
+
+      <!-- Toggle buttons -->
+      <div class="frame-27">
+        <div id="celsiusBtn" class="toggle active">°C</div>
+        <div id="fahrenheitBtn" class="toggle">°F</div>
+      </div>
+    </div>
+
+    <script type="module" src="../js/app.js"></script>
+  </body>
+</html>
