@@ -1,172 +1,427 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="globals.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Dashboard - Day Celsius</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="globals.css" />
     <script defer src="js/app.js"></script>
   </head>
   <body>
-    <div class="day-celsius">
-      <!-- SEARCH BAR -->
-      <div id="search-bar" class="search-bar">
-        <input id="search-input" type="text" placeholder="Search city..." />
-      </div>
+    <!-- Paste Figma to Code content here -->
+     <div class="day-celsius" style="width: 1512px; height: 982px; position: relative; background: #0F2451; overflow: hidden">
+  
+  <!-- SEARCH BAR -->
+  <div id="search-bar" class="search-bar" style="position: absolute; top: 34px; left: 290px; width: 400px; height: 42px; background: rgba(255, 255, 255, 0.10); border-radius: 21px; padding: 8px 16px; border: 1px rgba(255, 255, 255, 0.20) solid;">
+    <input id="search-input" type="text" placeholder="Search city..." style="background: transparent; border: none; color: white; font-size: 14px; width: 100%; outline: none; font-family: Inter;" />
+  </div>
 
-      <!-- WEATHER MAIN CARD -->
-      <div class="frame">
-        <div class="div"></div>
-        <div class="frame-2">
-          <div class="frame-3">
-            <div class="frame-4">
-              <div id="city" class="text-wrapper">Abuja</div>
-              <div id="country" class="text-wrapper-2">NG</div>
-              <div class="text-wrapper-3">,</div>
-            </div>
-            <div class="frame-5">
-              <img id="weather-icon" class="vector" src="img/vector-7.svg" />
-            </div>
-          </div>
-
-          <div class="frame-wrapper">
-            <div class="frame-6">
-              <div class="div-wrapper">
-                <div class="vector-wrapper">
-                  <img class="vector-2" src="img/vector-3.svg" />
-                </div>
-              </div>
-              <div class="scattered-clouds-wrapper">
-                <div id="condition" class="scattered-clouds">Scattered Clouds</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="frame-7">
-            <div id="updated-time" class="text-wrapper-4">07:30 AM</div>
-            <div class="text-wrapper-5">Updated</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- WEATHER METRICS -->
-      <div class="frame-8">
-        <div class="frame-9">
-          <div class="frame-10">
-            <img class="frame-11" src="img/frame-2.svg" />
-            <div class="frame-12"><div class="text-wrapper-6">Humidity</div></div>
-          </div>
-          <div class="frame-13">
-            <div class="frame-14"><div class="text-wrapper-7">%</div></div>
-            <div id="humidity" class="frame-15"><div class="text-wrapper-8">78</div></div>
-          </div>
-        </div>
-
-        <div class="frame-16">
-          <div class="rectangle"></div>
-          <div class="frame-17">
-            <img class="frame-11" src="img/frame-4.svg" />
-            <div class="frame-18"><div class="text-wrapper-9">Pressure</div></div>
-          </div>
-          <div class="frame-19">
-            <div class="frame-20"><div class="text-wrapper-10">hPa</div></div>
-            <div id="pressure" class="frame-21"><div class="text-wrapper-11">1012</div></div>
-          </div>
-        </div>
-
-        <div class="frame-22">
-          <div class="frame-10">
-            <img class="frame-11" src="img/image.svg" />
-            <div class="frame-23"><div class="text-wrapper-12">Wind Speed</div></div>
-          </div>
-          <div class="frame-13">
-            <div class="frame-24"><div class="text-wrapper-10">m/s</div></div>
-            <div id="wind" class="frame-25"><div class="text-wrapper-13">4.2</div></div>
-          </div>
-        </div>
-
-        <div class="frame-26">
-          <div class="rectangle"></div>
-          <div class="frame-17">
-            <img class="frame-11" src="img/frame-3.svg" />
-            <div class="frame-27"><div class="text-wrapper-14">Visibility</div></div>
-          </div>
-          <div class="frame-19">
-            <div class="frame-28"><div class="text-wrapper-15">km</div></div>
-            <div id="visibility" class="frame-29"><div class="text-wrapper-16">9</div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TEMPERATURE SECTION -->
-      <div class="frame-31">
-        <div class="frame-32">
-          <div id="feels-like" class="text-wrapper-17">27</div>
-          <div class="text-wrapper-18">Feels like</div>
-          <div class="text-wrapper-19">°C</div>
-        </div>
-        <div class="frame-33">
-          <div class="text-wrapper-20">°C</div>
-          <div id="temperature" class="text-wrapper-21">28</div>
-        </div>
-      </div>
-
-      <!-- TOGGLE -->
-      <div class="frame-34">
-        <div id="celsius-btn" class="frame-35"><div class="text-wrapper-22">°C</div></div>
-        <div id="fahrenheit-btn" class="frame-36"><div class="text-wrapper-23">°F</div></div>
-      </div>
-
-      <!-- NAVIGATION SIDE -->
-      <div class="frame-37">
-        <div class="rectangle-2"></div>
-        <div class="frame-38">
-          <div class="frame-39">
-            <div class="frame-40">
-              <div class="frame-41">
-                <div class="img-wrapper"><img class="vector-2" src="img/vector-6.svg" /></div>
-              </div>
-              <div class="frame-42">
-                <div class="frame-43"><div class="text-wrapper-24">Dashboard</div></div>
-                <div class="frame-44"><div class="text-wrapper-25">Weather</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="frame-45">
-            <div class="frame-46">
-              <div class="frame-47"><div class="text-wrapper-26">Current Location</div></div>
-              <div class="frame-48">
-                <img class="vector" src="img/vector-2.svg" />
-                <img class="img" src="img/vector.svg" />
-              </div>
-            </div>
-            <div class="frame-49"><div class="text-wrapper-27">Abuja</div></div>
-          </div>
-
-          <div class="frame-50">
-            <div class="frame-46">
-              <div class="frame-48"><img class="vector-2" src="img/vector-4.svg" /></div>
-              <div class="frame-51"><div class="text-wrapper-28">Condition</div></div>
-            </div>
-            <div class="frame-49"><div id="side-condition" class="text-wrapper-29">Clear</div></div>
-          </div>
-
-          <div class="frame-52">
-            <div class="frame-46">
-              <div class="frame-53"><div class="text-wrapper-30">Local Time</div></div>
-              <div class="frame-54">
-                <img class="vector-3" src="img/vector-9.svg" />
-                <img class="vector-4" src="img/vector-8.svg" />
-              </div>
-            </div>
-            <div class="frame-55"><div id="local-time" class="text-wrapper-31">07:30 AM</div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- FORECAST SECTION -->
-      <section id="forecast" class="forecast-section"></section>
+  <div style="width: 994px; height: 326px; left: 290px; top: 111px; position: absolute; background: rgba(0, 0, 0, 0); border-radius: 21px">
+    <div style="width: 994px; height: 326px; left: 0px; top: 0px; position: absolute">
+      <div style="width: 994px; height: 326px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.10); border-radius: 16px; border: 1px rgba(255, 255, 255, 0.20) solid"></div>
     </div>
+    <div style="width: 911.79px; height: 260px; left: 41.11px; top: 33px; position: absolute">
+      <div style="width: 911.79px; height: 32px; left: 0px; top: 0px; position: absolute">
+        <div style="width: 149.47px; height: 32px; left: 34.88px; top: 0px; position: absolute">
+          <div id="city" style="width: 78.10px; left: -3.55px; top: 0px; position: absolute; color: white; font-size: 24px; font-family: Inter; font-weight: 400; line-height: 32px; word-wrap: break-word">Abuja</div>
+          <div id="country" style="width: 43.20px; left: 80.40px; top: 0px; position: absolute; color: white; font-size: 24px; font-family: Inter; font-weight: 400; line-height: 32px; word-wrap: break-word">NG</div>
+          <div style="width: 15.60px; left: 69.70px; top: 0px; position: absolute; color: white; font-size: 24px; font-family: Inter; font-weight: 400; line-height: 32px; word-wrap: break-word">,</div>
+        </div>
+        <div style="width: 20px; height: 20px; left: -0.11px; top: 6px; position: absolute; overflow: hidden">
+          <div style="width: 13.33px; height: 16.67px; left: 3.33px; top: 1.67px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+          <div style="width: 5px; height: 5px; left: 7.50px; top: 5.83px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+        </div>
+      </div>
+      <div style="width: 911.79px; height: 152px; left: 0px; top: 56px; position: absolute">
+        <div style="width: 184.35px; height: 152px; left: 727.44px; top: 0px; position: absolute">
+          <div style="width: 139.51px; height: 112px; left: 22.42px; top: 0px; position: absolute">
+            <div style="width: 139.51px; height: 112px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.20); border-radius: 9999px"></div>
+            <div style="width: 64px; height: 64px; left: 38px; top: 24px; position: absolute; overflow: hidden">
+              <img id="weather-icon" style="width: 53.33px; height: 37.33px; left: 5.34px; top: 13.33px; position: absolute; outline: 2px white solid; outline-offset: -1px" src="img/vector-7.svg" alt="Weather Icon" />
+            </div>
+          </div>
+          <div style="width: 184.35px; height: 28px; left: 0px; top: 124px; position: absolute">
+            <div style="width: 184.35px; height: 28px; left: 0px; top: 0px; position: absolute"></div>
+            <div id="condition" style="width: 162.80px; left: -7.40px; top: 0px; position: absolute; color: white; font-size: 18px; font-family: Inter; font-weight: 400; text-transform: capitalize; line-height: 28px; word-wrap: break-word">Scattered clouds</div>
+          </div>
+        </div>
+      </div>
+      <div style="width: 911.79px; height: 20px; left: 0px; top: 240px; position: absolute">
+        <div id="updated-time" style="width: 69.30px; left: 57.85px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.50); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">07:30 AM</div>
+        <div style="width: 62.70px; left: -2.85px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.50); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">Updated</div>
+      </div>
+    </div>
+  </div>
+  <div style="width: 992px; height: 135px; left: 290px; top: 472px; position: absolute">
+    <div style="width: 233.70px; height: 135px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.10); border-radius: 16px">
+      <div style="width: 233.70px; height: 135px; left: 0px; top: 0px; position: absolute; border-radius: 16px"></div>
+      <div style="width: 171.55px; height: 36px; left: 31.08px; top: 25px; position: absolute">
+        <div style="width: 44.75px; height: 36px; left: 0px; top: 0px; position: absolute">
+          <div style="width: 44.75px; height: 36px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.20); border-radius: 9999px"></div>
+          <div style="width: 20px; height: 20px; left: 12px; top: 8px; position: absolute; overflow: hidden">
+            <div style="width: 11.67px; height: 15.83px; left: 4.17px; top: 2.50px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+          </div>
+        </div>
+        <div style="width: 74.59px; height: 20px; left: 59.67px; top: 8px; position: absolute">
+          <div style="width: 66px; left: -3px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.70); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">Humidity</div>
+        </div>
+      </div>
+      <div style="width: 171.55px; height: 37px; left: 31.08px; top: 73px; position: absolute">
+        <div style="width: 22.38px; height: 28px; left: 50.97px; top: 9px; position: absolute">
+          <div style="width: 21.60px; left: -1.80px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.70); font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">%</div>
+        </div>
+        <div id="humidity" style="width: 45.99px; height: 36px; left: 0px; top: 0px; position: absolute">
+          <div style="width: 44.40px; left: -3.70px; top: 0px; position: absolute; color: white; font-size: 30px; font-family: Inter; font-weight: 400; line-height: 36px; word-wrap: break-word">78</div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 233.70px; height: 135px; left: 505.94px; top: 0px; position: absolute; background: rgba(0, 0, 0, 0); border-radius: 19px">
+      <div style="width: 233.70px; height: 135px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.10); border-radius: 16px"></div>
+      <div style="width: 171.55px; height: 36px; left: 31.08px; top: 25px; position: absolute">
+        <div style="width: 171.55px; height: 36px; left: 0px; top: 0px; position: absolute"></div>
+        <div style="width: 44.75px; height: 36px; left: 0px; top: 0px; position: absolute">
+          <div style="width: 44.75px; height: 36px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.20); border-radius: 9999px"></div>
+          <div style="width: 20px; height: 20px; left: 12px; top: 8px; position: absolute; overflow: hidden">
+            <div style="width: 3.33px; height: 3.33px; left: 10px; top: 8.33px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+            <div style="width: 16.67px; height: 12.50px; left: 1.67px; top: 3.33px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+          </div>
+        </div>
+        <div style="width: 73.34px; height: 20px; left: 59.67px; top: 8px; position: absolute">
+          <div style="width: 73.34px; height: 20px; left: 0px; top: 0px; position: absolute"></div>
+          <div style="width: 64.90px; left: -2.95px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.70); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">Pressure</div>
+        </div>
+      </div>
+      <div style="width: 171.55px; height: 37px; left: 31.08px; top: 73px; position: absolute">
+        <div style="width: 171.55px; height: 37px; left: 0px; top: 0px; position: absolute"></div>
+        <div style="width: 39.78px; height: 28px; left: 85.77px; top: 9px; position: absolute">
+          <div style="width: 39.78px; height: 28px; left: 0px; top: 0px; position: absolute"></div>
+          <div style="width: 38.40px; left: -3.20px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.70); font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">hPa</div>
+        </div>
+        <div id="pressure" style="width: 80.80px; height: 36px; left: 0px; top: 0px; position: absolute">
+          <div style="width: 80.80px; height: 36px; left: 0px; top: 0px; position: absolute"></div>
+          <div style="width: 71.50px; left: -3.25px; top: 0px; position: absolute; color: white; font-size: 30px; font-family: Inter; font-weight: 400; line-height: 36px; word-wrap: break-word">1012</div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 233.70px; height: 135px; left: 253.59px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.10); border-radius: 19px">
+      <div style="width: 233.70px; height: 135px; left: 0px; top: 0px; position: absolute; border-radius: 16px"></div>
+      <div style="width: 171.55px; height: 36px; left: 31.08px; top: 25px; position: absolute">
+        <div style="width: 44.75px; height: 36px; left: 0px; top: 0px; position: absolute">
+          <div style="width: 44.75px; height: 36px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.20); border-radius: 9999px"></div>
+          <div style="width: 20px; height: 20px; left: 12px; top: 8px; position: absolute; overflow: hidden">
+            <div style="width: 11.67px; height: 3.33px; left: 1.67px; top: 13.33px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+            <div style="width: 16.67px; height: 4.17px; left: 1.67px; top: 5.83px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+            <div style="width: 9.17px; height: 3.33px; left: 1.67px; top: 3.33px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+          </div>
+        </div>
+        <div style="width: 100.69px; height: 20px; left: 59.67px; top: 8px; position: absolute">
+          <div style="width: 89.10px; left: -4.05px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.70); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">Wind Speed</div>
+        </div>
+      </div>
+      <div style="width: 171.55px; height: 37px; left: 31.08px; top: 73px; position: absolute">
+        <div style="width: 39.78px; height: 28px; left: 64.64px; top: 9px; position: absolute">
+          <div style="width: 38.40px; left: -3.20px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.70); font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">m/s</div>
+        </div>
+        <div id="wind" style="width: 59.67px; height: 36px; left: 0px; top: 0px; position: absolute">
+          <div style="width: 57.60px; left: -4.80px; top: 0px; position: absolute; color: white; font-size: 30px; font-family: Inter; font-weight: 400; line-height: 36px; word-wrap: break-word">4.2</div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 233.70px; height: 135px; left: 759.54px; top: 0px; position: absolute; background: rgba(0, 0, 0, 0); border-radius: 17px">
+      <div style="width: 233.70px; height: 135px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.10); border-radius: 16px"></div>
+      <div style="width: 171.55px; height: 36px; left: 31.08px; top: 25px; position: absolute">
+        <div style="width: 44.75px; height: 36px; left: 0px; top: 0px; position: absolute">
+          <div style="width: 44.75px; height: 36px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.20); border-radius: 9999px"></div>
+          <div style="width: 20px; height: 20px; left: 12px; top: 8px; position: absolute; overflow: hidden">
+            <div style="width: 16.67px; height: 11.67px; left: 1.67px; top: 4.17px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+            <div style="width: 5px; height: 5px; left: 7.50px; top: 7.50px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+          </div>
+        </div>
+        <div style="width: 70.86px; height: 20px; left: 59.67px; top: 8px; position: absolute">
+          <div style="width: 62.70px; left: -2.85px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.70); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">Visibility</div>
+        </div>
+      </div>
+      <div style="width: 171.55px; height: 37px; left: 31.08px; top: 73px; position: absolute">
+        <div style="width: 32.32px; height: 28px; left: 28.59px; top: 9px; position: absolute">
+          <div style="width: 31.20px; left: -2.60px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.70); font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">km</div>
+        </div>
+        <div id="visibility" style="width: 23.62px; height: 36px; left: 0px; top: 0px; position: absolute">
+          <div style="width: 22.80px; left: -1.90px; top: 0px; position: absolute; color: white; font-size: 30px; font-family: Inter; font-weight: 400; line-height: 36px; word-wrap: break-word">9</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FORECAST SECTION -->
+  <section id="forecast" style="width: 998px; height: 326px; left: 286px; top: 643px; position: absolute; background: rgba(255, 255, 255, 0.10); border-radius: 20px">
+    <div style="width: 998px; height: 326px; left: 0px; top: 0px; position: absolute; border-radius: 20px"></div>
+    <div style="width: 935.47px; height: 28px; left: 31.27px; top: 25px; position: absolute">
+      <div style="width: 163.90px; left: -7.45px; top: 0px; position: absolute; color: white; font-size: 20px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">5-Day Forecast</div>
+    </div>
+    <div style="width: 935.47px; height: 224px; left: 31.27px; top: 77px; position: absolute">
+      <div style="width: 171.34px; height: 224px; left: 0px; top: 0px; position: absolute; background: rgba(0, 0, 0, 0); border-radius: 20px">
+        <div style="width: 171.34px; height: 224px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.05); border-radius: 16px"></div>
+        <div style="width: 70.04px; height: 56px; left: 50.03px; top: 64px; position: absolute">
+          <div style="width: 70.04px; height: 56px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.20); border-radius: 9999px"></div>
+          <div style="width: 32px; height: 32px; left: 19px; top: 12px; position: absolute; overflow: hidden">
+            <div style="width: 26.66px; height: 17.65px; left: 2.67px; top: 4px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+          </div>
+        </div>
+        <div style="width: 56.28px; height: 48px; left: 57.53px; top: 132px; position: absolute">
+          <div style="width: 45px; height: 20px; left: 5px; top: 28px; position: absolute">
+            <div style="width: 20.40px; left: 4.30px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.60); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">24</div>
+            <div style="width: 19.20px; left: 21.40px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.60); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">°C</div>
+          </div>
+          <div style="width: 45px; height: 28px; left: 5px; top: 0px; position: absolute">
+            <div style="width: 28.80px; left: -2.40px; top: 0px; position: absolute; text-align: center; color: white; font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">30</div>
+            <div style="width: 25.20px; left: 21.90px; top: 0px; position: absolute; text-align: center; color: white; font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">°C</div>
+          </div>
+        </div>
+        <div style="width: 47.52px; height: 36px; left: 61.28px; top: 16px; position: absolute">
+          <div style="width: 38px; height: 20px; left: 5px; top: 0px; position: absolute">
+            <div style="width: 30px; left: 4.50px; top: 0px; position: absolute; text-align: center; color: white; font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">Tue</div>
+          </div>
+          <div style="width: 38px; height: 16px; left: 5px; top: 20px; position: absolute">
+            <div style="width: 45.60px; left: -3.80px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.60); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 16px; word-wrap: break-word">Oct 28</div>
+          </div>
+        </div>
+        <div style="width: 70.04px; height: 16px; left: 50.03px; top: 192px; position: absolute">
+          <div style="width: 61.60px; left: -2.80px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; text-transform: capitalize; line-height: 16px; word-wrap: break-word">Light rain</div>
+        </div>
+      </div>
+      <div style="width: 171.34px; height: 224px; left: 191.35px; top: 0px; position: absolute; background: rgba(0, 0, 0, 0); border-radius: 20px">
+        <div style="width: 171.34px; height: 224px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.05); border-radius: 16px"></div>
+        <div style="width: 70.04px; height: 56px; left: 50.03px; top: 64px; position: absolute">
+          <div style="width: 70.04px; height: 56px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.20); border-radius: 9999px"></div>
+          <div style="width: 32px; height: 32px; left: 19px; top: 12px; position: absolute; overflow: hidden">
+            <div style="width: 26.66px; height: 18.67px; left: 2.67px; top: 6.67px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+          </div>
+        </div>
+        <div style="width: 55.03px; height: 48px; left: 57.53px; top: 132px; position: absolute">
+          <div style="width: 55.03px; height: 48px; left: 0px; top: 0px; position: absolute"></div>
+          <div style="width: 44px; height: 20px; left: 6px; top: 28px; position: absolute">
+            <div style="width: 44px; height: 20px; left: 0px; top: 0px; position: absolute"></div>
+            <div style="width: 19.20px; left: 20.40px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.60); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">°C</div>
+            <div style="width: 20.40px; left: 4.30px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.60); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">25</div>
+          </div>
+          <div style="width: 44px; height: 28px; left: 6px; top: 0px; position: absolute">
+            <div style="width: 44px; height: 28px; left: 0px; top: 0px; position: absolute"></div>
+            <div style="width: 25.20px; left: 20.90px; top: 0px; position: absolute; text-align: center; color: white; font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">°C</div>
+            <div style="width: 27.60px; left: -2.30px; top: 0px; position: absolute; text-align: center; color: white; font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">29</div>
+          </div>
+        </div>
+        <div style="width: 47.52px; height: 36px; left: 61.28px; top: 16px; position: absolute">
+          <div style="width: 47.52px; height: 36px; left: 0px; top: 0px; position: absolute"></div>
+          <div style="width: 38px; height: 20px; left: 5px; top: 0px; position: absolute">
+            <div style="width: 38px; height: 20px; left: 0px; top: 0px; position: absolute"></div>
+            <div style="width: 37.20px; left: 0.90px; top: 0px; position: absolute; text-align: center; color: white; font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">Wed</div>
+          </div>
+          <div style="width: 38px; height: 16px; left: 5px; top: 20px; position: absolute">
+            <div style="width: 38px; height: 16px; left: 0px; top: 0px; position: absolute"></div>
+            <div style="width: 45.60px; left: -3.80px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.60); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 16px; word-wrap: break-word">Oct 29</div>
+          </div>
+        </div>
+        <div style="width: 103.80px; height: 16px; left: 33.77px; top: 192px; position: absolute">
+          <div style="width: 91.30px; left: -4.15px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; text-transform: capitalize; line-height: 16px; word-wrap: break-word">Broken clouds</div>
+        </div>
+      </div>
+      <div style="width: 171.34px; height: 224px; left: 382.69px; top: 0px; position: absolute; background: rgba(0, 0, 0, 0); border-radius: 20px">
+        <div style="width: 171.34px; height: 224px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.05); border-radius: 16px"></div>
+        <div style="width: 70.04px; height: 56px; left: 50.03px; top: 64px; position: absolute">
+          <div style="width: 70.04px; height: 56px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.20); border-radius: 9999px"></div>
+          <div style="width: 32px; height: 32px; left: 19px; top: 12px; position: absolute; overflow: hidden">
+            <div style="width: 10.67px; height: 10.67px; left: 10.67px; top: 10.67px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+            <div style="width: 1.88px; height: 1.88px; left: 6.57px; top: 6.57px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+            <div style="width: 1.88px; height: 1.88px; left: 23.55px; top: 23.55px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+            <div style="width: 1.88px; height: 1.88px; left: 6.57px; top: 23.55px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+            <div style="width: 1.88px; height: 1.88px; left: 23.55px; top: 6.57px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+          </div>
+        </div>
+        <div style="width: 51.28px; height: 48px; left: 60.03px; top: 132px; position: absolute">
+          <div style="width: 51.28px; height: 48px; left: 0px; top: 0px; position: absolute"></div>
+          <div style="width: 41px; height: 20px; left: 5px; top: 28px; position: absolute">
+            <div style="width: 41px; height: 20px; left: 0px; top: 0px; position: absolute"></div>
+            <div style="width: 20.40px; left: 1.30px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.60); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">24</div>
+            <div style="width: 19.20px; left: 18.40px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.60); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">°C</div>
+          </div>
+          <div style="width: 41px; height: 28px; left: 5px; top: 0px; position: absolute">
+            <div style="width: 41px; height: 28px; left: 0px; top: 0px; position: absolute"></div>
+            <div style="width: 22.80px; left: -1.90px; top: 0px; position: absolute; text-align: center; color: white; font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">31</div>
+            <div style="width: 25.20px; left: 16.90px; top: 0px; position: absolute; text-align: center; color: white; font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">°C</div>
+          </div>
+        </div>
+        <div style="width: 67.53px; height: 16px; left: 51.28px; top: 192px; position: absolute">
+          <div style="width: 67.53px; height: 16px; left: 0px; top: 0px; position: absolute"></div>
+          <div style="width: 59.40px; left: -2.70px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; text-transform: capitalize; line-height: 16px; word-wrap: break-word">Clear sky</div>
+        </div>
+        <div style="width: 47.52px; height: 36px; left: 61.28px; top: 16px; position: absolute">
+          <div style="width: 47.52px; height: 36px; left: 0px; top: 0px; position: absolute"></div>
+          <div style="width: 38px; height: 20px; left: 5px; top: 0px; position: absolute">
+            <div style="width: 38px; height: 20px; left: 0px; top: 0px; position: absolute"></div>
+            <div style="width: 31.20px; left: 3.40px; top: 0px; position: absolute; text-align: center; color: white; font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">Thu</div>
+          </div>
+          <div style="width: 38px; height: 16px; left: 5px; top: 20px; position: absolute">
+            <div style="width: 38px; height: 16px; left: 0px; top: 0px; position: absolute"></div>
+            <div style="width: 45.60px; left: -3.80px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.60); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 16px; word-wrap: break-word">Oct 30</div>
+          </div>
+        </div>
+      </div>
+      <div style="width: 171.34px; height: 224px; left: 572.79px; top: 0px; position: absolute; background: rgba(0, 0, 0, 0); border-radius: 20px">
+        <div style="width: 171.34px; height: 224px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.05); border-radius: 16px"></div>
+        <div style="width: 70.04px; height: 56px; left: 51.28px; top: 64px; position: absolute">
+          <div style="width: 70.04px; height: 56px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.20); border-radius: 9999px"></div>
+          <div style="width: 32px; height: 32px; left: 19px; top: 12px; position: absolute; overflow: hidden">
+            <div style="width: 26.66px; height: 18.67px; left: 2.67px; top: 6.67px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+          </div>
+        </div>
+        <div style="width: 56.28px; height: 48px; left: 57.53px; top: 132px; position: absolute">
+          <div style="width: 45px; height: 20px; left: 5px; top: 28px; position: absolute">
+            <div style="width: 19.20px; left: 21.40px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.60); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">°C</div>
+            <div style="width: 20.40px; left: 4.30px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.60); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">25</div>
+          </div>
+          <div style="width: 45px; height: 28px; left: 5px; top: 0px; position: absolute">
+            <div style="width: 45px; height: 28px; left: 0px; top: 0px; position: absolute"></div>
+            <div style="width: 25.20px; left: 21.90px; top: 0px; position: absolute; text-align: center; color: white; font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">°C</div>
+            <div style="width: 28.80px; left: -2.40px; top: 0px; position: absolute; text-align: center; color: white; font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">30</div>
+          </div>
+        </div>
+        <div style="width: 45.02px; height: 36px; left: 63.78px; top: 16px; position: absolute">
+          <div style="width: 45.02px; height: 36px; left: 0px; top: 0px; position: absolute"></div>
+          <div style="width: 36px; height: 20px; left: 5px; top: 0px; position: absolute">
+            <div style="width: 36px; height: 20px; left: 0px; top: 0px; position: absolute"></div>
+            <div style="width: 20.40px; left: 7.30px; top: 0px; position: absolute; text-align: center; color: white; font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">Fri</div>
+          </div>
+          <div style="width: 36px; height: 16px; left: 5px; top: 20px; position: absolute">
+            <div style="width: 36px; height: 16px; left: 0px; top: 0px; position: absolute"></div>
+            <div style="width: 43.20px; left: -3.60px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.60); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 16px; word-wrap: break-word">Oct 31</div>
+          </div>
+        </div>
+        <div style="width: 82.54px; height: 16px; left: 45.02px; top: 192px; position: absolute">
+          <div style="width: 82.54px; height: 16px; left: 0px; top: 0px; position: absolute"></div>
+          <div style="width: 72.60px; left: -3.30px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; text-transform: capitalize; line-height: 16px; word-wrap: break-word">Few clouds</div>
+        </div>
+      </div>
+      <div style="width: 171.34px; height: 224px; left: 764.13px; top: 0px; position: absolute; background: rgba(0, 0, 0, 0); border-radius: 20px">
+        <div style="width: 171.34px; height: 224px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.05); border-radius: 16px"></div>
+        <div style="width: 70.04px; height: 56px; left: 51.28px; top: 64px; position: absolute">
+          <div style="width: 70.04px; height: 56px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.20); border-radius: 9999px"></div>
+          <div style="width: 32px; height: 32px; left: 19px; top: 12px; position: absolute; overflow: hidden">
+            <div style="width: 26.66px; height: 17.65px; left: 2.67px; top: 4px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+          </div>
+        </div>
+        <div style="width: 55.03px; height: 48px; left: 57.53px; top: 132px; position: absolute">
+          <div style="width: 55.03px; height: 48px; left: 0px; top: 0px; position: absolute"></div>
+          <div style="width: 44px; height: 20px; left: 6px; top: 28px; position: absolute">
+            <div style="width: 44px; height: 20px; left: 0px; top: 0px; position: absolute"></div>
+            <div style="width: 20.40px; left: 4.30px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.60); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">24</div>
+            <div style="width: 19.20px; left: 21.40px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.60); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">°C</div>
+          </div>
+          <div style="width: 44px; height: 28px; left: 6px; top: 0px; position: absolute">
+            <div style="width: 44px; height: 28px; left: 0px; top: 0px; position: absolute"></div>
+            <div style="width: 27.60px; left: -2.30px; top: 0px; position: absolute; text-align: center; color: white; font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">29</div>
+            <div style="width: 25.20px; left: 20.90px; top: 0px; position: absolute; text-align: center; color: white; font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">°C</div>
+          </div>
+        </div>
+        <div style="width: 38.77px; height: 36px; left: 66.28px; top: 16px; position: absolute">
+          <div style="width: 38.77px; height: 36px; left: 0px; top: 0px; position: absolute"></div>
+          <div style="width: 31px; height: 20px; left: 3px; top: 0px; position: absolute">
+            <div style="width: 26.40px; left: 2.80px; top: 0px; position: absolute; text-align: center; color: white; font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">Sat</div>
+          </div>
+          <div style="width: 31px; height: 16px; left: 3px; top: 20px; position: absolute">
+            <div style="width: 37.20px; left: -3.10px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.60); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 16px; word-wrap: break-word">Nov 1</div>
+          </div>
+        </div>
+        <div style="width: 70.04px; height: 16px; left: 51.28px; top: 192px; position: absolute">
+          <div style="width: 70.04px; height: 16px; left: 0px; top: 0px; position: absolute"></div>
+          <div style="width: 61.60px; left: -2.80px; top: 0px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; text-transform: capitalize; line-height: 16px; word-wrap: break-word">Light rain</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div style="width: 220.47px; height: 108px; left: 331.11px; top: 222px; position: absolute">
+    <div style="width: 220.47px; height: 28px; left: 0px; top: 80px; position: absolute">
+      <div id="feels-like" style="width: 25.20px; left: 84.89px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.70); font-size: 20px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">27</div>
+      <div style="width: 102.30px; left: -4.65px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.70); font-size: 20px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">Feels like</div>
+      <div style="width: 28.80px; left: 110.60px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.70); font-size: 20px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">°C</div>
+    </div>
+    <div style="width: 220.47px; height: 72px; left: 0px; top: 0px; position: absolute">
+      <div style="width: 93.50px; left: 87.75px; top: -8px; position: absolute; color: white; font-size: 72px; font-family: Inter; font-weight: 400; line-height: 72px; word-wrap: break-word">°C</div>
+      <div id="temperature" style="width: 101.20px; left: -4.60px; top: -8px; position: absolute; color: white; font-size: 72px; font-family: Inter; font-weight: 400; line-height: 72px; word-wrap: break-word">28</div>
+    </div>
+  </div>
+  <div style="width: 109px; height: 42px; left: 1175px; top: 34px; position: absolute; background: rgba(0, 0, 0, 0); border-radius: 17px">
+    <div id="celsius-btn" style="width: 48px; height: 32px; left: 5px; top: 5px; position: absolute; cursor: pointer;">
+      <div style="width: 19.20px; left: 14.40px; top: 6px; position: absolute; text-align: center; color: white; font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">°C</div>
+    </div>
+    <div id="fahrenheit-btn" style="width: 47px; height: 32px; left: 57px; top: 5px; position: absolute; cursor: pointer;">
+      <div style="width: 18px; left: 14.50px; top: 6px; position: absolute; text-align: center; color: rgba(255, 255, 255, 0.70); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">°F</div>
+    </div>
+  </div>
+  <div style="width: 55.31px; height: 781.27px; left: 1071.27px; top: 27px; position: absolute; transform: rotate(90deg); transform-origin: top left; background: rgba(255, 255, 255, 0.09); border-radius: 36px"></div>
+  <div style="width: 226px; height: 982px; left: 0px; top: 0px; position: absolute">
+    <div style="width: 0.99px; height: 1534px; left: 226px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.20)"></div>
+    <div style="width: 226px; height: 923px; left: 0px; top: 0px; position: absolute">
+      <div style="width: 226px; height: 923px; left: 0px; top: 0px; position: absolute"></div>
+      <div style="width: 182.74px; height: 44px; left: 29.74px; top: 38px; position: absolute">
+        <div style="width: 182.74px; height: 44px; left: 0px; top: 0px; position: absolute">
+          <div style="width: 35.31px; height: 40px; left: 0px; top: 2px; position: absolute">
+            <div style="width: 24px; height: 24px; left: 6px; top: 8px; position: absolute; overflow: hidden">
+              <div style="width: 20px; height: 14px; left: 2px; top: 5px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+            </div>
+          </div>
+          <div style="width: 73.27px; height: 44px; left: 45.91px; top: 0px; position: absolute">
+            <div style="width: 73.27px; height: 16px; left: 0px; top: 28px; position: absolute">
+              <div style="width: 68.20px; left: -3.10px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 16px; word-wrap: break-word">Dashboard</div>
+            </div>
+            <div style="width: 73.27px; height: 28px; left: 0px; top: 0px; position: absolute">
+              <div style="width: 91.30px; left: -4.15px; top: 0px; position: absolute; color: white; font-size: 20px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">Weather</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="width: 182.74px; height: 56px; left: 43.61px; top: 290px; position: absolute">
+        <div style="width: 182.74px; height: 28px; left: 0px; top: 28px; position: absolute">
+          <div id="side-condition" style="width: 55.20px; left: 17.62px; top: 0px; position: absolute; color: white; font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">Clear</div>
+        </div>
+        <div style="width: 182.74px; height: 20px; left: 0px; top: 0px; position: absolute">
+          <div style="width: 16px; height: 16px; left: -13px; top: 2px; position: absolute; overflow: hidden">
+            <div style="width: 13.33px; height: 9.33px; left: 1.33px; top: 3.33px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+          </div>
+          <div style="width: 56.50px; height: 20px; left: 21.19px; top: 0px; position: absolute">
+            <div style="width: 70.40px; left: -3.20px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.70); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">Condition</div>
+          </div>
+        </div>
+      </div>
+      <div style="width: 182.74px; height: 56px; left: 26.76px; top: 406px; position: absolute">
+        <div style="width: 182.74px; height: 20px; left: 0px; top: 0px; position: absolute">
+          <div style="width: 64.45px; height: 20px; left: 34.32px; top: -2px; position: absolute">
+            <div style="width: 80.30px; left: -3.65px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.70); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">Local Time</div>
+          </div>
+          <div style="width: 16px; height: 16px; left: -1.38px; top: 2px; position: absolute; overflow: hidden">
+            <div style="width: 13.33px; height: 13.33px; left: 1.33px; top: 1.33px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+            <div style="width: 2.67px; height: 5.33px; left: 8px; top: 4px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+          </div>
+        </div>
+        <div style="width: 182.74px; height: 28px; left: 14.50px; top: 28px; position: absolute">
+          <div id="local-time" style="width: 91.30px; left: 17.62px; top: 0px; position: absolute; color: white; font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">07:30 AM</div>
+        </div>
+      </div>
+      <div style="width: 182.74px; height: 56px; left: 38.66px; top: 158px; position: absolute">
+        <div style="width: 182.74px; height: 20px; left: 0px; top: 0px; position: absolute">
+          <div style="width: 97.99px; height: 20px; left: 21.19px; top: 0px; position: absolute">
+            <div style="width: 122.10px; left: -5.55px; top: 0px; position: absolute; color: rgba(255, 255, 255, 0.70); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">Current Location</div>
+          </div>
+          <div style="width: 16px; height: 16px; left: -13px; top: 2px; position: absolute; overflow: hidden">
+            <div style="width: 10.67px; height: 13.33px; left: 2.67px; top: 1.33px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+            <div style="width: 4px; height: 4px; left: 6px; top: 4.67px; position: absolute; outline: 2px white solid; outline-offset: -1px"></div>
+          </div>
+        </div>
+        <div style="width: 182.74px; height: 28px; left: 0px; top: 28px; position: absolute">
+          <div style="width: 58.30px; left: 15.62px; top: 0px; position: absolute; color: white; font-size: 18px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word">Abuja</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   </body>
 </html>
