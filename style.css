@@ -1,11 +1,9 @@
-.day-celsius {
-  background: linear-gradient(
-    0deg,
-    rgba(15, 36, 81, 1) 0%,
-    rgba(15, 36, 81, 1) 100%
-  );
+/* Legacy Base Styles - Compatible with theme system */
+/* Note: Actual theme colors come from day.css and night.css */
+.day-celsius,
+.night-celsius {
   width: 100%;
-  min-width: 1512px;
+  min-width: 1440px;
   min-height: 982px;
   position: relative;
 }

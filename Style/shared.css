@@ -1,16 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap");
 
 * {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
 }
 
 html, body {
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
-  background-color: #0F2451;
-  overflow: hidden;
+  font-family: "Inter", "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Smooth theme transition */
+.day-celsius,
+.night-celsius {
+  transition: background 0.4s ease, color 0.4s ease;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
 }
 
 .frosted {
@@ -46,8 +56,82 @@ html, body {
   cursor: pointer;
   color: #fff;
   background: rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  user-select: none;
+}
+.toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 .toggle.active {
   background: rgba(255, 255, 255, 0.35);
   font-weight: 600;
+}
+
+/* Search Bar */
+.search-bar {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 21px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+.search-bar input {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+  font-family: "Inter", sans-serif;
+}
+
+.search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* Z-index layering */
+.frame-37,
+.frame-8 {
+  z-index: 10;
+}
+
+.search-bar {
+  z-index: 20;
+}
+
+.frame,
+.frame-30,
+.frame-31,
+.frame-83,
+.forecast {
+  z-index: 5;
+  position: relative;
+}
+
+.frame-34,
+.frame-27 {
+  z-index: 20;
 }
