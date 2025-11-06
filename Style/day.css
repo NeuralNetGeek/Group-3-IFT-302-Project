@@ -1,9 +1,11 @@
+/* Day Theme - Light Blue Gradient */ 
 .day-celsius {
-  background: linear-gradient(0deg, #0F2451 0%, #0F2451 100%);
+  background: linear-gradient(180deg, #1a4d8f 0%, #0f2451 50%, #0F2451 100%);
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   color: white;
+  transition: background 0.4s ease;
 }
 
 .frame {
@@ -73,4 +75,28 @@
   background: rgba(255,255,255,0.05);
   border-right: 1px solid rgba(255,255,255,0.15);
   padding: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+/* Day theme specific enhancements */
+.day-celsius .frosted {
+  background: rgba(255,255,255,0.12);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15)
+}
+
+.day-celsius .metric-card {
+  background: rgba(255,255,255,0.1);
+}
+
+.day-celsius .forecast-card {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Search bar positioning for day theme */
+.day-celsius .search-bar {
+  position: absolute;
+  top: 34px;
+  left: 290px;
+  width: 400px;
+  height: 42px;
 }

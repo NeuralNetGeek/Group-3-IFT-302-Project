@@ -1,10 +1,11 @@
+/* Night Theme - Deep Blue/Purple Gradient */ 
 .night-celsius {
-  background: linear-gradient(0deg, #050B22 0%, #050B22 100%);
+  background: linear-gradient(180deg, #0a0e27 0%, #050B22 40%, #020510 100%);
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   color: #fff;
-  overflow: hidden;
+  transition: background 0.4s ease;
 }
 
 .frame {
@@ -19,7 +20,8 @@
   backdrop-filter: blur(2px);
 }
 
-.frame-8 {
+.night-celsius .frame-8,
+.night-celsius .frame-37 {
   position: fixed;
   top: 0;
   left: 0;
@@ -29,6 +31,8 @@
   border-right: 1px solid rgba(255, 255, 255, 0.15);
   padding: 2rem;
   color: #fff;
+  backdrop-filter: blur(10px);
+  z-index: 10;
 }
 
 .frame-30 {
@@ -91,4 +95,44 @@
 .forecast-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Night theme specific enhancements */
+.night-celsius .frosted {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.night-celsius .metric-card {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.night-celsius .forcast-card {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Search bar positioning for night theme */
+.night-celsius .search-bar {
+  position: absolute;
+  top: 34px;
+  left: 290px;
+  width: 400px;
+  height: 42px;
+}
+
+/* Moon and stars effect (Just in case) */
+.night-celsius ::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(2px 2px at 20% 30%, white, transparent),
+                                   (2px 2px at 60% 70%, white, transparent),
+                                   (2px 2px at 50% 50%, white, transparent),
+                                   (2px 2px at 30% 10%, white, transparent),
+                                   (2px 2px at 90% 60%, white, transparent),
+                                   (2px 2px at 33% 80%, white, transparent);
+background-size: 200% 200%;
+opacity: 0.3;
+pointer-events: none;
 }
