@@ -1,6 +1,32 @@
 // ui.js - UI Rendering and Theme Management
 import { formatTime, saveToLocalStorage, getFromLocalStorage } from './app.js';
 
+const weatherIconMap = {
+  '01d': 'sun.svg',
+  '01n': 'moon.svg',
+  '02d': 'cloud-sun.svg',
+  '02n': 'moon.svg',
+  '03d': 'cloud.svg',
+  '03n': 'cloud.svg',
+  '04d': 'cloud.svg',
+  '04n': 'cloud.svg',
+  '09d': 'cloud-rain.svg',
+  '09n': 'cloud-rain.svg',
+  '10d': 'cloud-rain.svg',
+  '10n': 'cloud-rain.svg',
+  '11d': 'cloud-lightning.svg',
+  '11n': 'cloud-lightning.svg',
+  '13d': 'cloud-snow.svg',
+  '13n': 'cloud-snow.svg',
+  '50d': 'cloud-fog.svg',
+  '50n': 'cloud-fog.svg',
+};
+
+function getLocalWeatherIcon(iconCode) {
+  const fileName = weatherIconMap[iconCode] || 'cloud.svg';
+  return `assets/icons/${fileName}`;
+}
+
 // Current unit state (Celsius or Fahrenheit)
 let currentUnit = getFromLocalStorage('temperatureUnit') || 'C';
 
@@ -50,7 +76,7 @@ export function renderCurrentWeather(data) {
   const iconCode = data.weather[0].icon;
   const iconEl = document.getElementById('weather-icon');
   if (iconEl) {
-    iconEl.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+    iconEl.src = getLocalWeatherIcon(iconCode);
     iconEl.alt = condition;
   }
   
@@ -126,7 +152,7 @@ export function renderForecast(forecastData) {
     // Update weather icon - inject actual image
     const iconContainer = card.querySelector('[style*="width: 32px"][style*="height: 32px"][style*="overflow: hidden"]');
     if (iconContainer) {
-      iconContainer.innerHTML = `<img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${condition}" style="width: 100%; height: 100%; object-fit: contain;" />`;
+      iconContainer.innerHTML = `<img src="${getLocalWeatherIcon(iconCode)}" alt="${condition}" class="forecast-icon" />`;
     }
     
     // Update high temperature (18px white)
