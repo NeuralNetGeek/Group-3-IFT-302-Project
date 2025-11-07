@@ -1,0 +1,28 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Node / build artifacts (if ever added later)
+node_modules/
+dist/
+build/
+coverage/
+.env
+*.log
+
+# API keys and environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+api_key.txt
+
+# IDE configs
+.vscode/
+.idea/
+*.code-workspace
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
