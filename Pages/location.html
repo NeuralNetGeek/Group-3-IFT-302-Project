@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Location Weather - Weather Dashboard</title>
+  <link rel="stylesheet" href="../Style/shared.css">
+  <link rel="stylesheet" href="../Style/day.css">
+  <link rel="stylesheet" href="../Style/night.css">
+  <link rel="stylesheet" href="../Style/style.css">
+  <style>
+    .location-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      font-family: Inter, sans-serif;
+      z-index: 100;
+    }
+    
+    .location-message h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+    
+    .location-message p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 30px;
+    }
+    
+    .location-btn {
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      color: white;
+      font-size: 14px;
+      font-family: Inter, sans-serif;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin: 0 10px;
+    }
+    
+    .location-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .location-btn.primary {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    .back-link {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      font-family: Inter, sans-serif;
+      transition: background 0.3s;
+      z-index: 100;
+    }
+    
+    .back-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body class="day-celsius">
+  <a href="../index.html" class="back-link">← Back to Dashboard</a>
+  
+  <!-- Location Request Message -->
+  <div class="location-message" id="location-request">
+    <h2>Get Weather for Your Location</h2>
+    <p>Allow location access to see weather data for your current location</p>
+    <button class="location-btn primary" id="request-location-btn">Allow Location</button>
+    <button class="location-btn" onclick="window.location.href='../index.html'">Cancel</button>
+  </div>
+  
+  <!-- Loading State -->
+  <div class="location-message hidden" id="loading-state">
+    <div class="loading-spinner"></div>
+    <p>Getting your location...</p>
+  </div>
+  
+  <!-- Error State -->
+  <div class="location-message hidden" id="error-state">
+    <h2>Location Access Denied</h2>
+    <p id="error-message">Unable to access your location. Please enable location services.</p>
+    <button class="location-btn" onclick="window.location.href='../index.html'">Back to Dashboard</button>
+  </div>
+  
+  <!-- Weather Content (hidden initially) -->
+  <div class="day-celsius" id="weather-content" style="width: 1680px; height: 1050px; position: relative; overflow: hidden; display: none;">
+    <!-- Simplified weather display for location page -->
+    <div style="position: absolute; top: 200px; left: 50%; transform: translateX(-50%); text-align: center; color: white;">
+      <div id="location-city" style="font-size: 48px; font-family: Inter; margin-bottom: 20px;"></div>
+      <div id="location-temp" style="font-size: 72px; font-family: Inter; margin-bottom: 20px;">--°</div>
+      <div id="location-condition" style="font-size: 24px; font-family: Inter; opacity: 0.8; margin-bottom: 40px;"></div>
+      
+      <div style="display: flex; gap: 40px; justify-content: center; margin-top: 40px;">
+        <div style="text-align: center;">
+          <div style="font-size: 14px; opacity: 0.7; margin-bottom: 8px;">Humidity</div>
+          <div id="location-humidity" style="font-size: 24px;">--%</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-size: 14px; opacity: 0.7; margin-bottom: 8px;">Wind Speed</div>
+          <div id="location-wind" style="font-size: 24px;">-- m/s</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-size: 14px; opacity: 0.7; margin-bottom: 8px;">Pressure</div>
+          <div id="location-pressure" style="font-size: 24px;">-- hPa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script type="module">
+    import { fetchWeatherByCoords, detectDayNight } from '../js/app.js';
+    import { applyTheme } from '../js/ui.js';
+    
+    const locationRequest = document.getElementById('location-request');
+    const loadingState = document.getElementById('loading-state');
+    const errorState = document.getElementById('error-state');
+    const weatherContent = document.getElementById('weather-content');
+    const errorMessage = document.getElementById('error-message');
+    
+    // Apply initial theme
+    const hour = new Date().getHours();
+    const initialTheme = (hour >= 6 && hour < 18) ? 'day' : 'night';
+    applyTheme(initialTheme);
+    
+    // Request location button handler
+    document.getElementById('request-location-btn').addEventListener('click', requestLocation);
+    
+    function requestLocation() {
+      if (!navigator.geolocation) {
+        showError('Geolocation is not supported by your browser');
+        return;
+      }
+      
+      // Show loading state
+      locationRequest.classList.add('hidden');
+      loadingState.classList.remove('hidden');
+      
+      navigator.geolocation.getCurrentPosition(
+        handleLocationSuccess,
+        handleLocationError,
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0
+        }
+      );
+    }
+    
+    async function handleLocationSuccess(position) {
+      try {
+        const { latitude, longitude } = position.coords;
+        
+        // Fetch weather data
+        const weatherData = await fetchWeatherByCoords(latitude, longitude);
+        
+        // Apply theme based on weather data
+        const theme = detectDayNight(weatherData);
+        applyTheme(theme);
+        
+        // Display weather data
+        displayWeather(weatherData);
+        
+        // Hide loading and show content
+        loadingState.classList.add('hidden');
+        weatherContent.style.display = 'block';
+        
+      } catch (error) {
+        console.error('Error fetching weather:', error);
+        showError('Unable to fetch weather data for your location');
+      }
+    }
+    
+    function handleLocationError(error) {
+      console.error('Geolocation error:', error);
+      
+      let message = 'Unable to access your location.';
+      
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          message = 'Location access denied. Please enable location services in your browser settings.';
+          break;
+        case error.POSITION_UNAVAILABLE:
+          message = 'Location information is unavailable.';
+          break;
+        case error.TIMEOUT:
+          message = 'Location request timed out. Please try again.';
+          break;
+      }
+      
+      showError(message);
+    }
+    
+    function showError(message) {
+      locationRequest.classList.add('hidden');
+      loadingState.classList.add('hidden');
+      errorMessage.textContent = message;
+      errorState.classList.remove('hidden');
+    }
+    
+    function displayWeather(data) {
+      document.getElementById('location-city').textContent = `${data.name}, ${data.sys.country}`;
+      document.getElementById('location-temp').textContent = `${Math.round(data.main.temp)}°C`;
+      document.getElementById('location-condition').textContent = data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1);
+      document.getElementById('location-humidity').textContent = `${data.main.humidity}%`;
+      document.getElementById('location-wind').textContent = `${data.wind.speed.toFixed(1)} m/s`;
+      document.getElementById('location-pressure').textContent = `${data.main.pressure} hPa`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search History - Weather Dashboard</title>
+  <link rel="stylesheet" href="../Style/shared.css">
+  <link rel="stylesheet" href="../Style/day.css">
+  <link rel="stylesheet" href="../Style/night.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .history-container {
+      width: 841.81px;
+      height: 470px;
+      position: relative;
+    }
+    
+    .history-header {
+      width: 100%;
+      height: 68px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    
+    .history-title {
+      width: 238.70px;
+      position: absolute;
+      left: 301.28px;
+      top: 0;
+      text-align: center;
+      color: white;
+      font-size: 30px;
+      font-family: Poppins, sans-serif;
+      font-weight: 400;
+      line-height: 36px;
+    }
+    
+    .history-subtitle {
+      width: 203.50px;
+      position: absolute;
+      left: 319.28px;
+      top: 44px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.70);
+      font-size: 16px;
+      font-family: Poppins, sans-serif;
+      font-weight: 400;
+      line-height: 24px;
+    }
+    
+    .history-content {
+      width: 100%;
+      height: 370px;
+      position: absolute;
+      top: 100px;
+      left: 0;
+      background: rgba(255, 255, 255, 0.10);
+      border-radius: 16px;
+      border: 1px rgba(255, 255, 255, 0.20) solid;
+    }
+    
+    .history-toolbar {
+      width: 779.17px;
+      height: 32px;
+      position: absolute;
+      left: 31.32px;
+      top: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .history-toolbar-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .history-toolbar-title h3 {
+      color: white;
+      font-size: 18px;
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      line-height: 28px;
+      margin: 0;
+    }
+    
+    .clear-all-btn {
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+      border: none;
+      color: rgba(255, 255, 255, 0.60);
+      font-size: 12px;
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+    }
+    
+    .clear-all-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .history-list {
+      width: 779.17px;
+      height: 272px;
+      position: absolute;
+      left: 31.32px;
+      top: 73px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow-y: auto;
+    }
+    
+    .history-item {
+      width: 100%;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .history-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .history-item-name {
+      color: white;
+      font-size: 16px;
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      line-height: 24px;
+    }
+    
+    .delete-btn {
+      width: 30px;
+      height: 24px;
+      background: transparent;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    
+    .delete-btn:hover {
+      background: rgba(255, 0, 0, 0.2);
+      color: white;
+    }
+    
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      font-family: Inter, sans-serif;
+      transition: background 0.3s;
+    }
+    
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .empty-message {
+      width: 100%;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-family: Inter, sans-serif;
+      font-size: 14px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body class="day-celsius">
+  <a href="../index.html" class="back-btn">← Back to Dashboard</a>
+  
+  <div class="history-container">
+    <div class="history-header">
+      <div class="history-title">Search History</div>
+      <div class="history-subtitle">Recently searched cities</div>
+    </div>
+    
+    <div class="history-content">
+      <div class="history-toolbar">
+        <div class="history-toolbar-title">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="8" stroke="white" stroke-width="2"/>
+            <path d="M10 5V10L13 13" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>Recent Searches</h3>
+        </div>
+        <button class="clear-all-btn" id="clear-all-btn">Clear all</button>
+      </div>
+      
+      <div class="history-list" id="history-list">
+        <!-- History items will be dynamically inserted here -->
+      </div>
+    </div>
+  </div>
+  
+  <script type="module">
+    import { getSearchHistory, clearSearchHistory, removeFromSearchHistory } from '../js/app.js';
+    import { applyTheme } from '../js/ui.js';
+    
+    // Apply theme
+    const hour = new Date().getHours();
+    const theme = (hour >= 6 && hour < 18) ? 'day' : 'night';
+    applyTheme(theme);
+    
+    // Render history
+    function renderHistory() {
+      const historyList = document.getElementById('history-list');
+      const history = getSearchHistory();
+      
+      historyList.innerHTML = '';
+      
+      if (history.length === 0) {
+        historyList.innerHTML = '<div class="empty-message">No search history yet. Search for cities on the dashboard!</div>';
+        return;
+      }
+      
+      history.forEach(city => {
+        const item = document.createElement('div');
+        item.className = 'history-item';
+        
+        const cityName = document.createElement('div');
+        cityName.className = 'history-item-name';
+        cityName.textContent = city;
+        
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete-btn';
+        deleteBtn.innerHTML = '×';
+        deleteBtn.title = 'Remove from history';
+        
+        // Click on city name to view weather
+        cityName.addEventListener('click', () => {
+          window.location.href = `../index.html?city=${encodeURIComponent(city)}`;
+        });
+        
+        // Click delete button to remove from history
+        deleteBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          removeFromSearchHistory(city);
+          renderHistory();
+        });
+        
+        item.appendChild(cityName);
+        item.appendChild(deleteBtn);
+        historyList.appendChild(item);
+      });
+    }
+    
+    // Clear all button handler
+    document.getElementById('clear-all-btn').addEventListener('click', () => {
+      if (confirm('Are you sure you want to clear all search history?')) {
+        clearSearchHistory();
+        renderHistory();
+      }
+    });
+    
+    // Initial render
+    renderHistory();
+  </script>
+</body>
+</html>
