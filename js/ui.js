@@ -75,33 +75,25 @@ export function renderCurrentWeather(data) {
 export function renderForecast(forecastData) {
   if (!forecastData || !forecastData.list) return;
   
-  // Get one forecast per day at noon (12:00:00)
+  // Get one forecast per day (picking midday forecasts)
   const dailyForecasts = [];
   const seenDays = new Set();
   
   for (const item of forecastData.list) {
     const date = new Date(item.dt * 1000);
     const dayKey = date.toDateString();
-    const hour = date.getHours();
     
-    // Prefer noon forecasts for better representation
     if (!seenDays.has(dayKey) && dailyForecasts.length < 5) {
-      if (hour >= 11 && hour <= 14) {
-        seenDays.add(dayKey);
-        dailyForecasts.push(item);
-      } else if (!seenDays.has(dayKey) && dailyForecasts.length < 5) {
-        // Fallback: take first available for this day
-        seenDays.add(dayKey);
-        dailyForecasts.push(item);
-      }
+      seenDays.add(dayKey);
+      dailyForecasts.push(item);
     }
   }
   
-  // Update the 5 forecast cards in the HTML
+  // Update the 5 forecast cards
   const forecastSection = document.getElementById('forecast');
   if (!forecastSection) return;
   
-  const forecastCards = forecastSection.querySelectorAll('[style*="width: 171.34px"]');
+  const forecastCards = forecastSection.querySelectorAll('[style*="width: 171.34px"][style*="height: 224px"]');
   
   dailyForecasts.forEach((forecast, index) => {
     if (index >= forecastCards.length) return;
@@ -109,49 +101,52 @@ export function renderForecast(forecastData) {
     const card = forecastCards[index];
     const date = new Date(forecast.dt * 1000);
     
-    // Day name (e.g., "Mon", "Tue")
+    // Format date
     const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
-    const monthDay = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const month = date.toLocaleDateString('en-US', { month: 'short' });
+    const day = date.getDate();
     
-    // Temperatures
-    const tempMax = convertTemp(forecast.main.temp_max, currentUnit);
-    const tempMin = convertTemp(forecast.main.temp_min, currentUnit);
-    // Use just the degree symbol for high temp, full unit for low temp in Fahrenheit
-    const highTempSymbol = currentUnit === 'C' ? '\u00b0C' : '\u00b0F';
-    const lowTempSymbol = currentUnit === 'C' ? '\u00b0C' : '\u00b0F';
+    // Convert temperatures
+    const tempMax = Math.round(convertTemp(forecast.main.temp_max, currentUnit));
+    const tempMin = Math.round(convertTemp(forecast.main.temp_min, currentUnit));
+    const unitSymbol = currentUnit === 'C' ? '°C' : '°F';
     
-    // Condition
-    const condition = forecast.weather[0].description;
+    // Weather info
+    const condition = capitalizeFirst(forecast.weather[0].description);
     const iconCode = forecast.weather[0].icon;
     
-    // Update day name
-    const dayElement = card.querySelector('[style*="Tue"], [style*="Wed"], [style*="Thu"], [style*="Fri"], [style*="Sat"], [style*="Mon"], [style*="Sun"]');
-    if (dayElement) dayElement.textContent = dayName;
+    // Find and update day name
+    const dayElements = card.querySelectorAll('[style*="font-size: 14px"][style*="color: white"][style*="text-align: center"]');
+    if (dayElements[0]) dayElements[0].textContent = dayName;
     
-    // Update date
-    const dateElement = card.querySelector('[style*="Oct"]');
-    if (dateElement) dateElement.textContent = monthDay;
+    // Find and update date
+    const dateElements = card.querySelectorAll('[style*="font-size: 12px"][style*="rgba(255, 255, 255, 0.60)"][style*="text-align: center"]');
+    if (dateElements[0]) dateElements[0].textContent = `${month} ${day}`;
     
-    // Update max temp
-    const maxTempElements = card.querySelectorAll('[style*="font-size: 18px"][style*="color: white"]');
-    if (maxTempElements[0]) maxTempElements[0].textContent = Math.round(tempMax);
-    if (maxTempElements[1]) maxTempElements[1].textContent = highTempSymbol;
-    
-    // Update min temp
-    const minTempElements = card.querySelectorAll('[style*="font-size: 14px"][style*="rgba(255, 255, 255, 0.60)"]');
-    if (minTempElements[0]) minTempElements[0].textContent = Math.round(tempMin);
-    if (minTempElements[1]) minTempElements[1].textContent = lowTempSymbol;
-    
-    // Update condition
-    const conditionElement = card.querySelector('[style*="text-transform: capitalize"][style*="font-size: 12px"]');
-    if (conditionElement) conditionElement.textContent = capitalizeFirst(condition);
-    
-    // Update icon
-    const iconElement = card.querySelector('img, [style*="overflow: hidden"]');
-    if (iconElement && iconElement.tagName === 'IMG') {
-      iconElement.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-      iconElement.alt = condition;
+    // Update weather icon - inject actual image
+    const iconContainer = card.querySelector('[style*="width: 32px"][style*="height: 32px"][style*="overflow: hidden"]');
+    if (iconContainer) {
+      iconContainer.innerHTML = `<img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${condition}" style="width: 100%; height: 100%; object-fit: contain;" />`;
     }
+    
+    // Update high temperature (18px white)
+    const highTempElements = card.querySelectorAll('[style*="font-size: 18px"][style*="color: white"][style*="text-align: center"]');
+    if (highTempElements.length >= 2) {
+      highTempElements[0].textContent = tempMax;
+      highTempElements[1].textContent = unitSymbol;
+    }
+    
+    // Update low temperature (14px with 0.60 opacity)
+    const lowTempElements = card.querySelectorAll('[style*="font-size: 14px"][style*="rgba(255, 255, 255, 0.60)"][style*="text-align: center"]');
+    // Skip first element (date), use next two for temperature
+    if (lowTempElements.length >= 3) {
+      lowTempElements[1].textContent = tempMin;
+      lowTempElements[2].textContent = unitSymbol;
+    }
+    
+    // Update condition text
+    const conditionElements = card.querySelectorAll('[style*="font-size: 12px"][style*="text-transform: capitalize"]');
+    if (conditionElements[0]) conditionElements[0].textContent = condition;
   });
   
   hideLoading();
