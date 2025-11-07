@@ -67,6 +67,29 @@ html, body {
   font-weight: 600;
 }
 
+/* Temperature unit button styling */
+#celsius-btn,
+#fahrenheit-btn {
+  cursor: pointer;
+  transition: background 0.3s ease, opacity 0.3s ease;
+}
+
+#celsius-btn.active,
+#fahrenheit-btn.active {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+#celsius-btn:not(.active),
+#fahrenheit-btn:not(.active) {
+  background: transparent !important;
+  opacity: 0.7;
+}
+
+#celsius-btn:hover,
+#fahrenheit-btn:hover {
+  opacity: 1;
+}
+
 /* Search Bar */
 .search-bar {
   background: rgba(255, 255, 255, 0.1);

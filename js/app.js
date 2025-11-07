@@ -27,7 +27,6 @@ export async function fetchWeather(city) {
     // Try to load from cache
     const cachedData = getFromLocalStorage('lastWeather');
     if (cachedData) {
-      console.log('Using cached weather data');
       return cachedData;
     }
     throw error;
@@ -59,7 +58,6 @@ export async function fetchForecast(city) {
     // Try to load from cache
     const cachedData = getFromLocalStorage('lastForecast');
     if (cachedData) {
-      console.log('Using cached forecast data');
       return cachedData;
     }
     throw error;

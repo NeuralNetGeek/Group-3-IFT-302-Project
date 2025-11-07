@@ -150,9 +150,10 @@
     const weatherContent = document.getElementById('weather-content');
     const errorMessage = document.getElementById('error-message');
     
-    // Apply initial theme
+    // Apply initial theme to body
     const hour = new Date().getHours();
     const initialTheme = (hour >= 6 && hour < 18) ? 'day' : 'night';
+    document.body.className = initialTheme === 'day' ? 'day-celsius' : 'night-celsius';
     applyTheme(initialTheme);
     
     // Request location button handler

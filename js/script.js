@@ -16,7 +16,8 @@ import {
   showError,
   showLoading,
   setUnit,
-  getUnit
+  getUnit,
+  updateTemperatureSymbols
 } from './ui.js';
 
 const DEFAULT_CITY = 'Abuja';
@@ -37,6 +38,13 @@ async function init() {
   
   // Setup event listeners
   setupEventListeners();
+  
+  // Load saved unit preference
+  const savedUnit = getFromLocalStorage('temperatureUnit') || 'C';
+  setUnit(savedUnit);
+  
+  // Update temperature symbols to match loaded unit
+  updateTemperatureSymbols();
 }
 
 /**
@@ -89,9 +97,6 @@ function setupEventListeners() {
   if (fahrenheitBtn) {
     fahrenheitBtn.addEventListener('click', () => handleUnitToggle('F'));
   }
-  
-  // Initialize default unit button state
-  setUnit('C');
 }
 
 /**
@@ -129,6 +134,9 @@ async function handleUnitToggle(unit) {
   if (forecastData) {
     renderForecast(forecastData);
   }
+  
+  // Update all temperature symbols in the UI
+  updateTemperatureSymbols();
 }
 
 /**
