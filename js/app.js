@@ -1,5 +1,5 @@
 // app.js - Weather API and Data Management
-import { API_KEY, BASE_URL } from './config.js';
+import { API_KEY, BASE_URL } from './configs.js';
 
 /**
  * Fetch current weather data for a city
