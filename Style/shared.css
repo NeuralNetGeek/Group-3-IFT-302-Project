@@ -232,3 +232,18 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   object-fit: contain;
 }
+
+/* Ensure long condition text wraps neatly */
+#condition {
+  white-space: normal !important;
+  word-break: break-word;
+  text-align: center;
+}
+
+/* Sidebar condition text wraps cleanly without awkward breaks */
+#side-condition {
+  white-space: normal !important;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  width: 140px !important; /* expand from tiny inline width to allow proper wrapping */
+}
