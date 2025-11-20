@@ -4,6 +4,7 @@ const path = require('path');
 
 const PORT = 5000;
 const HOST = '0.0.0.0';
+const PUBLIC_DIR = __dirname;
 
 const mimeTypes = {
   '.html': 'text/html',
@@ -24,9 +25,29 @@ const mimeTypes = {
 };
 
 const server = http.createServer((req, res) => {
-  let filePath = '.' + req.url;
-  if (filePath === './') {
-    filePath = './Pages/index.html';
+  // Parse and sanitize the URL path
+  let requestPath = req.url.split('?')[0]; // Remove query string
+  if (requestPath === '/') {
+    requestPath = '/Pages/index.html';
+  }
+
+  // Resolve the absolute path and ensure it's within the public directory
+  const filePath = path.resolve(PUBLIC_DIR, '.' + requestPath);
+  
+  // Security check: ensure the resolved path is within PUBLIC_DIR
+  // Use path.relative to check if the path escapes the public directory
+  const relativePath = path.relative(PUBLIC_DIR, filePath);
+  const isPathSafe = relativePath && 
+                     !relativePath.startsWith('..') && 
+                     !path.isAbsolute(relativePath);
+  
+  if (!isPathSafe) {
+    res.writeHead(403, { 
+      'Content-Type': 'text/html',
+      'Cache-Control': 'no-cache, no-store, must-revalidate'
+    });
+    res.end('<h1>403 - Forbidden</h1>', 'utf-8');
+    return;
   }
 
   const extname = String(path.extname(filePath)).toLowerCase();

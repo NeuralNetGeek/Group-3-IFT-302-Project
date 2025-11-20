@@ -26,6 +26,13 @@ The application uses Node.js to serve static files and inject environment variab
 The app requires an OpenWeatherMap API key stored in the `OPENWEATHER_API_KEY` environment variable. The server injects this securely into the HTML at runtime.
 
 ## Recent Changes
+**November 20, 2025**
+- Fixed day/night theme switching by removing inline background style that was overriding CSS
+- Night mode now correctly activates based on sunset time (after 6:06 PM local time)
+- Theme automatically switches between light blue gradient (day) and dark blue/purple gradient (night)
+- Fixed critical security vulnerability: Added path normalization and directory traversal protection to server.js
+- Server now validates all file paths stay within project root directory
+
 **November 10, 2025**
 - Initial project setup in Replit environment
 - Created Node.js server to serve static files on port 5000
