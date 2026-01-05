@@ -72,7 +72,7 @@ const server = http.createServer((req, res) => {
       
       if (extname === '.html') {
         let htmlContent = content.toString('utf-8');
-        const envScript = `<script>window.ENV = { OPENWEATHER_API_KEY: "${process.env.OPENWEATHER_API_KEY || ''}" };</script>`;
+        const envScript = `<script>window.ENV = { OPENWEATHER_API_KEY: "API_KEY_HERE" };</script>`;
         htmlContent = htmlContent.replace('</head>', `${envScript}\n</head>`);
         fileContent = Buffer.from(htmlContent, 'utf-8');
       }
